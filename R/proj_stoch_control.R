@@ -4,7 +4,7 @@ library(popdemo)
 
 # function to create stochastic projection and obtain the outcomes
 
-proj.stoch<- function(list.mat, ini.vec,Aseq="unif",iterations){
+proj.stoch.control<- function(list.mat, ini.vec,Aseq="unif",iterations){
   
   #Check primitivity, irreducibility and ergodicity
   
@@ -54,3 +54,32 @@ proj.stoch<- function(list.mat, ini.vec,Aseq="unif",iterations){
   assign(x=paste("df_outcome_",name,sep=""),value=df.outcome,envir = .GlobalEnv)
   
 }
+
+
+# proyección manual
+
+nYears <- 10
+outcome <- matrix(0,nrow=length(ini.vec.f),ncol=nYears+1)          # initialize storage array for recording age structured abundances for the next 10 years. 
+rownames(outcome) <- rownames(ini.vec.f)      # assign row and column names
+colnames(outcome) <- seq(0,nYears)
+outcome[,1] <- ini.vec.f                      # initialize the simulated abundances
+
+# loop
+
+for(t in 2:(nYears+1)){
+  sel.mat <- sample(1:100,size=1)
+  outcome[9,t-1] <- outcome[9,t-1]-100 # saco 1000 individuos adulto 1
+  if(outcome[9,t-1]<0){outcome[9,t-1]<-0}
+  outcome[,t] <-  mat.s.control20[[sel.mat]] %*% outcome[,t-1]     # perform matrix multiplication for each year of the simulation!
+}
+
+
+
+
+##calculate the stuff
+#work out per-timestep growth
+gr <- pr[(discard:iterations) + 1] / pr[discard:iterations]
+#find the per-timestep mean growth (stochastic growth)
+if(growth) gr_mean <- mean(gr)
+#find the per-timestep variance in growth
+if(variance) gr_var <- stats::var(gr)
