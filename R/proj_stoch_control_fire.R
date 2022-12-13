@@ -1,12 +1,12 @@
 
 # library
 library(popdemo)
-source("./R/projection_control.R")
+source("./R/projection_control_fire.R")
 
 # function to create stochastic projection and obtain the outcomes
 # removal = fixed number of individuals of class adult 1 removed every year
 
-proj.stoch.control<- function(list.mat, ini.vec,iterations,removal){
+proj.stoch.control.fire<- function(list.mat, ini.vec,iterations,Aseq,removal){
   
   #Check primitivity, irreducibility and ergodicity
   
@@ -18,7 +18,7 @@ proj.stoch.control<- function(list.mat, ini.vec,iterations,removal){
   
   discard<-100
   
-  proj2000<-project.control(list.mat=list.mat,
+  proj2000<-project.control.fire(list.mat=list.mat,
                             ini.vec = ini.vec,
                             removal=removal,
                             time=iterations)
@@ -42,7 +42,7 @@ proj.stoch.control<- function(list.mat, ini.vec,iterations,removal){
   time.extinction.ad<-NA
   
   for(i in 1:2000){
-    proj<-project.control(list.mat, ini.vec,removal=removal) 
+    proj<-project.control.fire(list.mat, ini.vec,removal=removal) 
     n.tot.100[[i]]<-sum(proj[,100]) 
     n.tot.50[[i]]<-sum(proj[,50])
     n.pl.100[[i]]<-sum(proj[2:12,100])
@@ -60,7 +60,7 @@ proj.stoch.control<- function(list.mat, ini.vec,iterations,removal){
                           summary.time.ad.ext=array(summary(time.extinction.ad)))# time to adult extinction
   
   #base projection
-  proj <- project.control(list.mat, ini.vec, removal=removal) 
+  proj <- project.control.fire(list.mat, ini.vec, removal=removal) 
   
   assign(x=paste("proj",name,sep=""),value=proj,envir = .GlobalEnv)
   assign(x=paste("df_outcome_",name,sep=""),value=df.outcome,envir = .GlobalEnv)
