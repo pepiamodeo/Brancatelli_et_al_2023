@@ -61,23 +61,7 @@ proj.stoch.control(list.mat=mat.s.control100000,
                    removal=100000)
 
 
-#Figure
-library(ggplot2)
-
-df_projControl<-data.frame(Time=rep(1:100,4),
-                       Removal=factor(rep(c("1000", "10000","50000","100000"),each=100),levels=c("1000", "10000","50000","100000")),
-                       Proj=c(colSums(projcontrol1000[,1:100]),
-                              colSums(projcontrol10000[,1:100]),
-                              colSums(projcontrol50000[,1:100]),
-                              colSums(projcontrol100000[,1:100])))
-
-
-ggplot(data=df_projControl,aes(x=Time,y=Proj,colour=Removal))+
-  geom_line()+
-  scale_y_log10()+
-  labs(x = "Time" , y = "Population size")
-
-# Figure adults
+# Figure adult population size
 
 df_projControl_ad<-data.frame(Time=rep(1:100,4),
                            Removal=factor(rep(c("1000","10000", "50000","100000"),each=100),levels=c("1000", "10000","50000","100000")),

@@ -89,16 +89,6 @@ abline(v=years.f,col="red")
 
 dev.off()
 
-#Figure
-df_projGF<-data.frame(Time=rep(1:100,3),
-                        FireProbability=factor(rep(c("0.2 (mean interval 5 years)", "0.11 (mean interval 9 years)", "0.07 (mean interval 15 years)"),each=100)),
-                        Proj=c(projGF5[1:100],projGF9[1:100],projGF15[1:100]))
-
-ggplot(data=df_projGF,aes(x=Time,y=Proj,colour=FireProbability))+
-  geom_line()+
-  scale_y_log10()+
-  labs(x = "Time" , y = "Population size")
-
 ### Figure adults
 
 df_projGF_ad<-data.frame(Time=rep(1:100,3),

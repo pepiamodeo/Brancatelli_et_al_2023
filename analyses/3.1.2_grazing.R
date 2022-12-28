@@ -27,18 +27,7 @@ matrix_load(path="./data/not_grazing_param.csv",
             name=name) 
 proj.stoch(list.mat=mat.s.NoGrazing,ini.vec,iterations=1000)
 
-###Figure
-
-df_projGrazing<-data.frame(Time=rep(1:100,2),
-                        Grazing=factor(rep(c("Grazing", "No Grazing"),each=100)),
-                        Proj=c(projGrazing[1:100],projNoGrazing[1:100]))
-
-ggplot(data=df_projGrazing,aes(x=Time,y=Proj,colour=Grazing))+
-  geom_line()+
-  scale_y_log10()+
-  labs(x = "Time" , y = "Population size")
-
-### Figure adults
+### Figure adult population size
 
 df_projGrazing_ad<-data.frame(Time=rep(1:100,2),
                               Grazing=factor(rep(c("Grazing", "No Grazing"),each=100)),

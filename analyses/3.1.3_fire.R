@@ -185,21 +185,7 @@ abline(v=years.f,col="red")
 
 dev.off()
 
-###FIGURE PROJECTIONS
-
-df_projfire<-data.frame(Time=rep(1:100,9),
-                         FireProbability=factor(rep(c("0.3 (mean interval 3 years)", "0.2 (mean interval 5 years)", "0.14 (mean interval 7 years)","0.11 (mean interval 9 years)", "0.09 (mean interval 11 years)","0.08 (mean interval 13 years)","0.07 (mean interval 15 years)", "0.06 (mean interval 17 years)", "0.05 (mean interval 19 years)"),each=100)),
-                         Proj=c(projfire3[1:100],projfire5[1:100],projfire7[1:100],
-                                projfire9[1:100],projfire11[1:100],projfire13[1:100],
-                                projfire15[1:100],projfire17[1:100],projfire19[1:100] ))
-
-
-ggplot(data=df_projfire,aes(x=Time,y=Proj,colour=FireProbability))+
-  geom_line()+
-  scale_y_log10()+
-  labs(x = "Time" , y = "Population size")
-
-### Figure adults
+### Figure adult population size
 
 df_projfire_ad<-data.frame(Time=rep(1:100,9),
                                  FireProbability=factor(rep(c("0.3 (mean interval 3 years)", "0.2 (mean interval 5 years)", "0.14 (mean interval 7 years)","0.11 (mean interval 9 years)", "0.09 (mean interval 11 years)","0.08 (mean interval 13 years)","0.07 (mean interval 15 years)", "0.06 (mean interval 17 years)", "0.05 (mean interval 19 years)"),each=100)),

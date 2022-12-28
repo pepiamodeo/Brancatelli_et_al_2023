@@ -61,20 +61,7 @@ matrix_load(path="./data/SWHigh_param.csv",
 proj.stoch(list.mat=mat.s.SWHigh,ini.vec=ini.vec,
            iterations=2000)
 
-###Figure
-
-df_projTopography<-data.frame(Time=rep(1:100,6),
-                       Slope=factor(rep(c("NEHigh", "SWHigh","NEMid", "SWMid","NELow", "SWLow"),each=100)),
-                       Proj=c(projNEHigh[1:100],projSWHigh[1:100],projNEMid[1:100],
-                              projSWMid[1:100],projNELow[1:100],projSWLow[1:100] ))
-
-ggplot(data=df_projTopography,aes(x=Time,y=Proj,colour=Slope))+
-  geom_line()+
-  scale_y_log10()+
-  labs(x = "Time" , y = "Population size")
-
-
-### Figure adults
+### Figure adult population size
 
 df_projTopography_ad<-data.frame(Time=rep(1:100,6),
                                  Slope=factor(rep(c("NEHigh", "SWHigh","NEMid", "SWMid","NELow", "SWLow"),each=100)),

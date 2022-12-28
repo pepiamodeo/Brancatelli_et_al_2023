@@ -70,21 +70,19 @@ proj.stoch.control.fire(list.mat=listContFire,
                         Aseq=PmatF,
                         removal=10000,
                         iterations=2000)
-#Figure 8
 
-# no se puede con esta función nueva
+#Figure Adult population Size
 
-#Figure 9
 df_projCF<-data.frame(Time=rep(1:100,3),
                       FiresProbability=factor(rep(c("0.2 (mean interval 5 years)", "0.11 (mean interval 9 years)", "0.07 (mean interval 15 years)"),each=100)),
-                      Proj=c(colSums(projCF5[,1:100]),
-                             colSums(projCF9[,1:100]),
-                             colSums(projCF15[,1:100])))
+                      Proj=c(colSums(projCF5[9:12,1:100]),
+                             colSums(projCF9[9:12,1:100]),
+                             colSums(projCF15[9:12,1:100])))
 
 fig_CF<-ggplot(data=df_projCF,aes(x=Time,y=Proj,colour=FiresProbability))+
   geom_line()+
   scale_y_log10()+
-  labs(x = "Time" , y = "Population size",colour= "Removal 10000 + Fire Probability")
+  labs(x = "Time" , y = "Adult Population size",colour= "Removal 10000 + Fire Probability")
 
 fig_CF
 
