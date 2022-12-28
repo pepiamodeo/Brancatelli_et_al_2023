@@ -91,11 +91,33 @@ dev.off()
 
 #Figure
 df_projGF<-data.frame(Time=rep(1:100,3),
-                        FiresProbability=factor(rep(c("0.2 (mean interval 5 years)", "0.11 (mean interval 9 years)", "0.07 (mean interval 15 years)"),each=100)),
+                        FireProbability=factor(rep(c("0.2 (mean interval 5 years)", "0.11 (mean interval 9 years)", "0.07 (mean interval 15 years)"),each=100)),
                         Proj=c(projGF5[1:100],projGF9[1:100],projGF15[1:100]))
 
-ggplot(data=df_projGF,aes(x=Time,y=Proj,colour=FiresProbability))+
+ggplot(data=df_projGF,aes(x=Time,y=Proj,colour=FireProbability))+
   geom_line()+
   scale_y_log10()+
   labs(x = "Time" , y = "Population size")
+
+### Figure adults
+
+df_projGF_ad<-data.frame(Time=rep(1:100,3),
+                         FireProbability=factor(rep(c("0.2 (mean interval 5 years)", "0.11 (mean interval 9 years)", "0.07 (mean interval 15 years)"),each=100)),
+                         Proj=c(rowSums(vec(projGF5)[1:100,9:12]),
+                                rowSums(vec(projGF9)[1:100,9:12]),
+                                rowSums(vec(projGF15)[1:100,9:12])))
+
+fig_GF <-ggplot(data=df_projGF_ad,aes(x=Time,y=Proj,colour=FireProbability))+
+  geom_line()+
+  scale_y_continuous(limits=c(0.0001,10000000000000),trans="log10")+
+  labs(x = "Time (years)" , y = "Adult Population Size")
+
+fig_GF
+
+ggsave(plot=fig_GF,"./fig/fig5.pdf",width=180,height=140,units="mm",
+       dpi = 600, colormodel = "cmyk")
+ggsave(plot=fig_GF,"./fig/fig5.tiff",width=180,height=180,units="mm",
+       dpi = 600,compression="lzw")
+
+
 

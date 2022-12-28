@@ -86,6 +86,8 @@ fig_CF<-ggplot(data=df_projCF,aes(x=Time,y=Proj,colour=FiresProbability))+
   scale_y_log10()+
   labs(x = "Time" , y = "Population size",colour= "Removal 10000 + Fire Probability")
 
+fig_CF
+
 ggsave(plot=fig_CF,"./fig/fig9fixed.pdf",width=180,height=140,units="mm",
        dpi = 600, colormodel = "cmyk")
 ggsave(plot=fig_CF,"./fig/fig9fixed.tiff",width=180,height=180,units="mm",

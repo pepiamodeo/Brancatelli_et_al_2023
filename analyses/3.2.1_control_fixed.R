@@ -27,7 +27,7 @@ proj.stoch.control(list.mat=mat.s.control1000,
                    iterations=2000,
                    removal=1000)
 
-##Control10000: annual removal of 2000 individuales 
+##Control10000: annual removal of 10000 individuales 
 
 name="control10000"
 matrix_load(path="./data/mean_param.csv",
@@ -38,7 +38,7 @@ proj.stoch.control(list.mat=mat.s.control10000,
                    iterations=2000,
                    removal=10000)
 
-##Control 50000: annual removal of 1000000 individuals
+##Control 50000: annual removal of 50000 individuals
 
 name="control50000"
 matrix_load(path="./data/mean_param.csv",

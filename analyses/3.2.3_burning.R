@@ -69,11 +69,11 @@ proj.stoch(list.mat=listFireDet,ini.vec=ini.vec.f,
 #Figure
 
 df_Burning<-data.frame(Time=rep(1:100,5),
-                       IntervalFires=factor(rep(c(3,5,7,9,11),each=100)),
+                       TimeBetweenFires=factor(rep(c(3,5,7,9,11),each=100)),
                         Proj=c(projburn3[1:100],projburn5[1:100],projburn7[1:100],
                                projburn9[1:100],projburn11[1:100]))
 
-ggplot(data=df_Burning,aes(x=Time,y=Proj,colour=IntervalFires))+
+ggplot(data=df_Burning,aes(x=Time,y=Proj,colour=TimeBetweenFires))+
   geom_line()+
   scale_y_log10()+
   labs(x = "Time" , y = "Population size")
@@ -81,14 +81,14 @@ ggplot(data=df_Burning,aes(x=Time,y=Proj,colour=IntervalFires))+
 ### Figure adults
 
 df_Burning<-data.frame(Time=rep(1:100,5),
-                       IntervalFires=factor(rep(c(3,5,7,9,11),each=100)),
+                       TimeBetweenFires=factor(rep(c(3,5,7,9,11),each=100)),
                        Proj=c(rowSums(vec(projburn3)[1:100,9:12]),
                        rowSums(vec(projburn5)[1:100,9:12]),
                        rowSums(vec(projburn7)[1:100,9:12]),
                        rowSums(vec(projburn9)[1:100,9:12]),
                        rowSums(vec(projburn11)[1:100,9:12])))
 
-fig_burning<-ggplot(data=df_Burning,aes(x=Time,y=Proj,colour=IntervalFires))+
+fig_burning<-ggplot(data=df_Burning,aes(x=Time,y=Proj,colour=TimeBetweenFires))+
   geom_line()+
   scale_y_continuous(limits=c(0.0001,10000000000000000),trans="log10")+
   labs(x = "Time (years)" , y = "Adult Population Size")
