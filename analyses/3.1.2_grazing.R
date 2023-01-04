@@ -27,7 +27,7 @@ matrix_load(path="./data/not_grazing_param.csv",
             name=name) 
 proj.stoch(list.mat=mat.s.NoGrazing,ini.vec,iterations=1000)
 
-### Figure adult population size
+### Figure 2: adult population size
 
 df_projGrazing_ad<-data.frame(Time=rep(1:100,2),
                               Grazing=factor(rep(c("Grazing", "No Grazing"),each=100)),

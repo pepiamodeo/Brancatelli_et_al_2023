@@ -16,16 +16,16 @@ source("./R/proj_stoch_control.R") # projection and outcomes
 ini.vec.f<-c(6194767,32,73,77,50,39,23,14,34,33,62,20) # forest vector 
 ex.ad <- 0.86^8 # minimum effective number of adults
 
-##Control 1000: annual removal of 1000 individuals
+##Control 4000: annual removal of 4000 individuals
 
-name="control1000"
+name="control4000"
 matrix_load(path="./data/mean_param.csv",
             name=name) 
 
-proj.stoch.control(list.mat=mat.s.control1000,
+proj.stoch.control(list.mat=mat.s.control4000,
                    ini.vec=ini.vec.f,
                    iterations=2000,
-                   removal=1000)
+                   removal=4000)
 
 ##Control10000: annual removal of 10000 individuales 
 
@@ -61,11 +61,11 @@ proj.stoch.control(list.mat=mat.s.control100000,
                    removal=100000)
 
 
-# Figure adult population size
+# Figure 6: adult population size
 
 df_projControl_ad<-data.frame(Time=rep(1:100,4),
-                           Removal=factor(rep(c("1000","10000", "50000","100000"),each=100),levels=c("1000", "10000","50000","100000")),
-                           Proj=c(colSums(projcontrol1000[9:12,1:100]),
+                           Removal=factor(rep(c("4000","10000", "50000","100000"),each=100),levels=c("4000", "10000","50000","100000")),
+                           Proj=c(colSums(projcontrol4000[9:12,1:100]),
                                   colSums(projcontrol10000[9:12,1:100]),
                                   colSums(projcontrol50000[9:12,1:100]),
                                   colSums(projcontrol100000[9:12,1:100])))
@@ -77,7 +77,7 @@ fig_control <-ggplot(data=df_projControl_ad,aes(x=Time,y=Proj,colour=Removal))+
 
 fig_control
 
-ggsave(plot=fig_control,"./fig/fig7fixed.pdf",width=180,height=140,units="mm",
+ggsave(plot=fig_control,"./fig/fig6.pdf",width=180,height=140,units="mm",
        dpi = 600, colormodel = "cmyk")
-ggsave(plot=fig_control,"./fig/fig7fixed.tiff",width=180,height=180,units="mm",
+ggsave(plot=fig_control,"./fig/fig6.tiff",width=180,height=180,units="mm",
        dpi = 600,compression="lzw")

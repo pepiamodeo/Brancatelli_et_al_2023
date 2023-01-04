@@ -61,7 +61,7 @@ matrix_load(path="./data/SWHigh_param.csv",
 proj.stoch(list.mat=mat.s.SWHigh,ini.vec=ini.vec,
            iterations=2000)
 
-### Figure adult population size
+### Figure 1: adult population size
 
 df_projTopography_ad<-data.frame(Time=rep(1:100,6),
                                  Slope=factor(rep(c("NEHigh", "SWHigh","NEMid", "SWMid","NELow", "SWLow"),each=100)),

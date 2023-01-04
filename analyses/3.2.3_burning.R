@@ -65,7 +65,7 @@ name <- "burn11"
 proj.stoch(list.mat=listFireDet,ini.vec=ini.vec.f,
            Aseq=sec11,iterations=1000)
 
-### Figure adult population size
+### Figure 8: adult population size
 
 df_Burning<-data.frame(Time=rep(1:100,5),
                        TimeBetweenFires=factor(rep(c(3,5,7,9,11),each=100)),
@@ -82,8 +82,8 @@ fig_burning<-ggplot(data=df_Burning,aes(x=Time,y=Proj,colour=TimeBetweenFires))+
 
 fig_burning
 
-ggsave(plot=fig_burning,"./fig/fig12.pdf",width=180,height=140,units="mm",
+ggsave(plot=fig_burning,"./fig/fig8.pdf",width=180,height=140,units="mm",
        dpi = 600, colormodel = "cmyk")
-ggsave(plot=fig_burning,"./fig/fig12.tiff",width=180,height=180,units="mm",
+ggsave(plot=fig_burning,"./fig/fig8.tiff",width=180,height=180,units="mm",
        dpi = 600,compression="lzw")
 

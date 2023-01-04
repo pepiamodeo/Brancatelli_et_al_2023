@@ -127,65 +127,53 @@ tiff("./fig/fig3.tiff",width=180,height=180,units="mm",
 
 
 par(mfrow=c(4,2))
-plot(projfire3, log = "y",main="(a) p = 0.3", xlab= "", ylab="Population size")
 
+plot(projfire3, log = "y",main="(a) p = 0.3", xlab= "", ylab="Population size")
 Aseq(projfire3) 
 years.f<-which(Aseq(projfire3)==2) 
 abline(v=years.f,col="red") 
 
-#Figure 3 (i)
-plot(projfire5, log = "y",main="(b) p = 0.2", xlab= "", ylab="Population size")
 
+plot(projfire5, log = "y",main="(b) p = 0.2", xlab= "", ylab="Population size")
 Aseq(projfire5) 
 years.f<-which(Aseq(projfire5)==2) 
 abline(v=years.f,col="red") 
 
-#Figure 3 (i)
 plot(projfire7, log = "y",main="(c) p = 0.14", xlab= "", ylab="Population size")
-
 Aseq(projfire7) 
 years.f<-which(Aseq(projfire7)==2) 
 abline(v=years.f,col="red") 
 
-#Figure3 (i)
-plot(projfire9, log = "y",main="(d) p = 0.11", xlab= "", ylab="Population size")
 
+plot(projfire9, log = "y",main="(d) p = 0.11", xlab= "", ylab="Population size")
 Aseq(projfire9) 
 years.f<-which(Aseq(projfire9)==2) 
 abline(v=years.f,col="red") 
 
-#Figure 3 (i)
-plot(projfire11, log = "y",main="(e) p = 0.09", xlab= "", ylab="Population size")
 
+plot(projfire11, log = "y",main="(e) p = 0.09", xlab= "", ylab="Population size")
 Aseq(projfire11) 
 years.f<-which(Aseq(projfire11)==2) 
 abline(v=years.f,col="red") 
-#Figure 3 (i)
-plot(projfire13, log = "y",main="(f) p = 0.08", xlab= "", ylab="Population size")
 
+plot(projfire13, log = "y",main="(f) p = 0.08", xlab= "", ylab="Population size")
 Aseq(projfire13) 
 years.f<-which(Aseq(projfire13)==2) 
 abline(v=years.f,col="red") 
 
-#Figure 3 (ii)
-
 plot(projfire15, log = "y",main="(g) p = 0.07", xlab= "Time", ylab="Population size")
-
 Aseq(projfire15) 
 years.f<-which(Aseq(projfire15)==2) 
 abline(v=years.f,col="red") 
 
-
-#Figure 3 (ii)
 plot(projfire17, log = "y",main="(h) p = 0.06", xlab= "Time", ylab="Population size")
-
 Aseq(projfire17) 
 years.f<-which(Aseq(projfire17)==2) 
 abline(v=years.f,col="red") 
 
 dev.off()
 
-### Figure adult population size
+### Figure 4: adult population size
 
 df_projfire_ad<-data.frame(Time=rep(1:100,9),
                                  FireProbability=factor(rep(c("0.3 (mean interval 3 years)", "0.2 (mean interval 5 years)", "0.14 (mean interval 7 years)","0.11 (mean interval 9 years)", "0.09 (mean interval 11 years)","0.08 (mean interval 13 years)","0.07 (mean interval 15 years)", "0.06 (mean interval 17 years)", "0.05 (mean interval 19 years)"),each=100)),

@@ -61,35 +61,9 @@ name <- "GF15"
 proj.stoch(list.mat=listGrazFire,ini.vec=ini.vec.f,
            Aseq=PmatF,iterations=2000)
 
-#Figure 5
 
-#windows()
 
-tiff("./fig/fig5.tiff",width=180,height=180,units="mm",
-     res = 600,compression="lzw")
-
-par(mfrow=c(2,2))
-plot(projGF5, log = "y",main="(a) grazing+fire (p=0.2)", xlab= "Time", ylab="Population size")
-
-Aseq(projGF5) 
-years.f<-which(Aseq(projGF5)==2) 
-abline(v=years.f,col="red") 
-
-plot(projGF9, log = "y",main="(b) grazing+fire (p=0.11)", xlab= "Time", ylab="Population size")
-
-Aseq(projGF9) 
-years.f<-which(Aseq(projGF9)==2) 
-abline(v=years.f,col="red") 
-
-plot(projGF15, log = "y",main="(c) grazing+fire (p=0.07)", xlab= "Time", ylab="Population size")
-
-Aseq(projGF15) 
-years.f<-which(Aseq(projGF15)==2) 
-abline(v=years.f,col="red") 
-
-dev.off()
-
-### Figure adults
+### Figure 5:  adult population size
 
 df_projGF_ad<-data.frame(Time=rep(1:100,3),
                          FireProbability=factor(rep(c("0.2 (mean interval 5 years)", "0.11 (mean interval 9 years)", "0.07 (mean interval 15 years)"),each=100)),

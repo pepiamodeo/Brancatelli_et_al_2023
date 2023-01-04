@@ -41,7 +41,7 @@ name <- "CF5"
 proj.stoch.control.fire(list.mat=listContFire,
                   ini.vec=ini.vec.f,
                   Aseq=PmatF,
-                  removal=10000,
+                  removal=4000,
                   iterations=2000)
 
 ##11% fire prob.(every 9 years)
@@ -54,7 +54,7 @@ name <- "CF9"
 proj.stoch.control.fire(list.mat=listContFire,
                         ini.vec=ini.vec.f,
                         Aseq=PmatF,
-                        removal=10000,
+                        removal=4000,
                         iterations=2000)
 
 
@@ -68,10 +68,10 @@ name <- "CF15"
 proj.stoch.control.fire(list.mat=listContFire,
                         ini.vec=ini.vec.f,
                         Aseq=PmatF,
-                        removal=10000,
+                        removal=4000,
                         iterations=2000)
 
-#Figure Adult population Size
+#Figure 7: adult population Size
 
 df_projCF<-data.frame(Time=rep(1:100,3),
                       FiresProbability=factor(rep(c("0.2 (mean interval 5 years)", "0.11 (mean interval 9 years)", "0.07 (mean interval 15 years)"),each=100)),
@@ -82,13 +82,13 @@ df_projCF<-data.frame(Time=rep(1:100,3),
 fig_CF<-ggplot(data=df_projCF,aes(x=Time,y=Proj,colour=FiresProbability))+
   geom_line()+
   scale_y_log10()+
-  labs(x = "Time" , y = "Adult Population size",colour= "Removal 10000 + Fire Probability")
+  labs(x = "Time" , y = "Adult Population size",colour= "Removal 4000 + Fire Probability")
 
 fig_CF
 
-ggsave(plot=fig_CF,"./fig/fig9fixed.pdf",width=180,height=140,units="mm",
+ggsave(plot=fig_CF,"./fig/fig7.pdf",width=180,height=140,units="mm",
        dpi = 600, colormodel = "cmyk")
-ggsave(plot=fig_CF,"./fig/fig9fixed.tiff",width=180,height=180,units="mm",
+ggsave(plot=fig_CF,"./fig/fig7.tiff",width=180,height=180,units="mm",
        dpi = 600,compression="lzw")
 
 
