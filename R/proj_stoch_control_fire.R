@@ -48,7 +48,7 @@ proj.stoch.control.fire<- function(list.mat, ini.vec,iterations,Aseq,removal){
     n.pl.100[[i]]<-sum(proj[2:12,100])
     n.ad.50[[i]]<-sum(proj[9:12,50])
     n.ad.100[[i]]<-sum(proj[9:12,100]) 
-    time.extinction.ad[i]<-min(which(rowSums(proj[9:12,])<ex.ad))
+    time.extinction.ad[i]<-min(which(colSums(proj[9:12,])<ex.ad))
   }
   
   df.outcome<- data.frame(growth.rate,
@@ -57,7 +57,7 @@ proj.stoch.control.fire<- function(list.mat, ini.vec,iterations,Aseq,removal){
                           summary.nad.50=array(summary(n.ad.50)),# adults at 50 years of the projection
                           prop.total.extinction=sum(n.tot.100<1)/2000,#proportion of iterations with total extinction at 100 years
                           prop.adult.extinction=sum(n.ad.100<ex.ad)/2000,#proportion of iterations with adult extinction at 100 years
-                          summary.time.ad.ext=array(summary(time.extinction.ad)))# time to adult extinction
+                          summary.time.ad.ext=array(summary(time.extinction.ad[is.finite(time.extinction.ad)])))# time to adult extinction
   
   #base projection
   proj <- project.control.fire(list.mat, ini.vec, removal=removal) 
